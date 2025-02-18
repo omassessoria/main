@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">https://github.com/omassessoria/main/tree/main
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBPT - OM Assessoria Contábil Ltda</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label, select, input, button { display: block; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h2>De olho no imposto - Ref. IBPT</h2>
+    
+    <label for="valorBruto">Valor Bruto da Nota (R$):</label>
+    <input type="text" id="valorBruto" placeholder="R$ 0,00" oninput="formatCurrency(this); calcularAliquotas()">
+    
+    <label for="codigoServico">Código do Serviço:</label>
+    <select id="codigoServico" onchange="calcularAliquotas()">
+        <option value="" disabled selected>Selecione o código...</option>
+        <option value="04030" data-federal="13.45" data-municipal="3.25">04030 - Serviços Médicos | 13.45% | 3.25%</option>
+	<option value="05762" data-federal="13.45" data-municipal="2.08">05762 - Outros serviços de instrução, treinamento, orientação pedagógica e educacional, avaliação de conhecimentos | 13.45% | 2.08%</option>
+    </select>
+    <label for="retencao">Há retenção na fonte?</label>
+    <select id="retencao" onchange="calcularAliquotas()">
+        <option value="nao">Não</option>
+        <option value="irrf">Apenas IRRF</option>
+        <option value="completo">IRRF, Pis, Cofins e CSLL</option>
+    </select>
+    
+    <h3>Resultado:</h3>
+    <p id="resultado"></p>
+    
+    <button onclick="copiarTexto()">Copiar</button>
+        
+	<script src="script.js"></script>
+
+</body>
+</html>
